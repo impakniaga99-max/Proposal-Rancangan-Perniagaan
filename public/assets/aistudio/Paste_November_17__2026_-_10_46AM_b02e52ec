@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ms" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal Digital: Bengkel Penyediaan Rancangan Perniagaan</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#224463',
+                            dark: '#162e43',
+                            light: '#2d5880',
+                            accent: '#d3ac53',
+                            accentHover: '#b8923f'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; color: black !important; }
+            .print-break { page-break-before: always; }
+            .glass-card { border: 1px solid #cbd5e1 !important; box-shadow: none !important; }
+        }
+        body {
+            background-color: #224463;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(211, 172, 83, 0.3);
+        }
+        .custom-gradient {
+            background: linear-gradient(135deg, #224463 0%, #162e43 100%);
+        }
+        .accent-gradient {
+            background: linear-gradient(135deg, #d3ac53 0%, #b8923f 100%);
+        }
+        /* Smooth Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #162e43;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d3ac53;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-[#224463] text-slate-100 font-sans antialiased selection:bg-[#d3ac53] selection:text-[#224463]">
+
+<!-- Top Navigation with Mobile Drawer Support -->
+    <header class="sticky top-0 z-50 bg-[#224463]/95 backdrop-blur-md border-b border-[#d3ac53]/30 shadow-2xl no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="accent-gradient text-[#224463] p-3 rounded-xl shadow-lg font-bold text-xl flex items-center justify-center">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-base sm:text-lg leading-tight tracking-wide text-white">Proposal Digital</h1>
+                    <p class="text-xs text-[#d3ac53] font-semibold tracking-wider uppercase">Bengkel Rancangan Perniagaan</p>
+                </div>
+            </div>
+
+<!-- Desktop Nav -->
+            <nav class="hidden xl:flex items-center space-x-1 text-xs font-medium text-slate-200 overflow-x-auto py-2">
+                <a href="#ringkasan" class="px-2.5 py-2 rounded-lg hover:bg-[#162e43] hover:text-[#d3ac53] transition">1. Ringkasan</a>
+                <a href="#pengenalan" class="px-2.5 py-2 rounded-lg hover:bg-[#162e43] hover:text-[#d3ac53] transition">2. Pengenalan</a>
+                <a href="#masalah" class="px-2.5 py-2 rounded-lg hover:bg-[#162e43] hover:text-[#d3ac53] transition">3. Masalah</a>
+                <a href="#penyelesaian" class="px-2.5 py-2 rounded-lg hover:bg-[#162e43] hover:text-[#d3ac53] transition">4. Penyelesaian</a>
+                <a href="#objektif" class="px-2.5 py-2 rounded-lg hover:bg-[#162e43] hover:text-[#d3ac53] transition">5. Objektif</a>
+                <a href="#sasaran" class="px-2.5 py-2 rounded-lg hover:bg-[#162e43] hover:text-[#d3ac53] transition">6. Sasaran</a>
+                <a href="#impak" class="px-2.5 py-2 rounded-lg hover:bg-[#162e43] hover:text-[#d3ac53] transition">7. Impak Peserta</a>
+                <a href="#agensi" class="px-2.5 py-2 rounded-lg hover:bg-[#162e43] hover:text-[#d3ac53] transition">8. Impak Agensi</a>
+                <a href="#kesimpulan" class="px-2.5 py-2 rounded-lg hover:bg-[#162e43] hover:text-[#d3ac53] transition">9. Kesimpulan</a>
+                <a href="#penutup" class="px-2.5 py-2 rounded-lg hover:bg-[#162e43] hover:text-[#d3ac53] transition">10. Penutup</a>
+            </nav>
+
+<div class="flex items-center space-x-3">
+                <button onclick="window.print()" class="accent-gradient text-[#224463] font-bold px-4 py-2.5 rounded-xl shadow-lg hover:opacity-90 transition flex items-center space-x-2 text-sm">
+                    <i class="fa-solid fa-print"></i>
+                    <span class="hidden sm:inline">Cetak / PDF</span>
+                </button>
+                <!-- Mobile Menu Toggle Button -->
+                <button id="menu-btn" class="xl:hidden bg-[#162e43] border border-[#d3ac53]/40 text-[#d3ac53] p-2.5 rounded-xl hover:bg-[#2d5880] transition">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+<!-- Mobile Dropdown Nav -->
+        <div id="mobile-menu" class="hidden xl:hidden bg-[#162e43] border-t border-[#d3ac53]/30 px-4 py-4 space-y-2 text-sm font-medium">
+            <a href="#ringkasan" class="block px-3 py-2 rounded-lg hover:bg-[#224463] hover:text-[#d3ac53] transition">1. Ringkasan Eksekutif</a>
+            <a href="#pengenalan" class="block px-3 py-2 rounded-lg hover:bg-[#224463] hover:text-[#d3ac53] transition">2. Pengenalan</a>
+            <a href="#masalah" class="block px-3 py-2 rounded-lg hover:bg-[#224463] hover:text-[#d3ac53] transition">3. Penyataan Masalah</a>
+            <a href="#penyelesaian" class="block px-3 py-2 rounded-lg hover:bg-[#224463] hover:text-[#d3ac53] transition">4. Penyelesaian</a>
+            <a href="#objektif" class="block px-3 py-2 rounded-lg hover:bg-[#224463] hover:text-[#d3ac53] transition">5. Objektif Program</a>
+            <a href="#sasaran" class="block px-3 py-2 rounded-lg hover:bg-[#224463] hover:text-[#d3ac53] transition">6. Sasaran Peserta</a>
+            <a href="#impak" class="block px-3 py-2 rounded-lg hover:bg-[#224463] hover:text-[#d3ac53] transition">7. Impak Kepada Peserta</a>
+            <a href="#agensi" class="block px-3 py-2 rounded-lg hover:bg-[#224463] hover:text-[#d3ac53] transition">8. Impak Kepada Agensi</a>
+            <a href="#kesimpulan" class="block px-3 py-2 rounded-lg hover:bg-[#224463] hover:text-[#d3ac53] transition">9. Kesimpulan</a>
+            <a href="#penutup" class="block px-3 py-2 rounded-lg hover:bg-[#224463] hover:text-[#d3ac53] transition">10. Penutup</a>
+        </div>
+    </header>
+
+<!-- Hero Section -->
+    <section class="relative text-white py-20 sm:py-28 px-4 overflow-hidden border-b border-[#d3ac53]/30 bg-cover bg-center" style="background-image: linear-gradient(rgba(34, 68, 99, 0.92), rgba(22, 46, 67, 0.96)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1920&q=80');">
+        <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#d3ac53_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <span class="inline-block bg-[#d3ac53] text-[#224463] text-xs font-bold px-5 py-2 rounded-full mb-6 uppercase tracking-widest shadow-xl">
+                Proposal Rasmi Program Latihan Usahawan
+            </span>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight drop-shadow-md">
+                Bengkel Penyediaan Rancangan Perniagaan Berstrategi AI
+            </h1>
+            <p class="text-base sm:text-lg lg:text-xl text-slate-200 max-w-3xl mx-auto mb-10 leading-relaxed drop-shadow">
+                Transformasi idea perniagaan kepada dokumen rasmi yang komprehensif, disokong oleh struktur data sahih, unjuran kewangan munasabah, dan bimbingan pakar beretika.
+            </p>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 text-xs sm:text-sm font-semibold">
+                <div class="bg-[#162e43]/90 border border-[#d3ac53]/40 px-4 sm:px-5 py-3 rounded-xl flex items-center space-x-3 shadow-xl backdrop-blur-md">
+                    <i class="fa-regular fa-calendar-days text-[#d3ac53] text-base sm:text-lg"></i>
+                    <span>2 Hari Bengkel + 1 Sesi Susulan</span>
+                </div>
+                <div class="bg-[#162e43]/90 border border-[#d3ac53]/40 px-4 sm:px-5 py-3 rounded-xl flex items-center space-x-3 shadow-xl backdrop-blur-md">
+                    <i class="fa-solid fa-robot text-[#d3ac53] text-base sm:text-lg"></i>
+                    <span>Integrasi AI Beretika</span>
+                </div>
+                <div class="bg-[#162e43]/90 border border-[#d3ac53]/40 px-4 sm:px-5 py-3 rounded-xl flex items-center space-x-3 shadow-xl backdrop-blur-md">
+                    <i class="fa-solid fa-file-shield text-[#d3ac53] text-base sm:text-lg"></i>
+                    <span>Piawaian Agensi Pembiayaan</span>
+                </div>
+            </div>
+
+<!-- Quick Search Bar for Interactive Filtering -->
+            <div class="mt-8 max-w-xl mx-auto">
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" id="section-search" placeholder="Cari tajuk atau isi kandungan dalam proposal..." class="w-full pl-11 pr-4 py-3 bg-[#162e43]/90 border border-[#d3ac53]/40 rounded-2xl text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#d3ac53] shadow-xl backdrop-blur">
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16 sm:space-y-20">
+
+<!-- 1. Ringkasan Eksekutif -->
+        <section id="ringkasan" class="proposal-section scroll-mt-28" data-keywords="ringkasan eksekutif matlamat tempoh standard">
+            <div class="glass-card text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl border-l-8 border-[#224463]">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-[#224463] text-[#d3ac53] rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-extrabold shadow-lg shrink-0">
+                            01
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-3xl font-extrabold text-[#224463]">Ringkasan Eksekutif</h2>
+                            <p class="text-xs sm:text-sm font-medium text-slate-500">Intipati dan hala tuju strategik pelaksanaan program</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleCardBody(this)" class="text-[#224463] hover:text-[#d3ac53] p-2 transition text-lg" title="Tutup / Buka">
+                        <i class="fa-solid fa-chevron-up toggle-icon"></i>
+                    </button>
+                </div>
+
+<div class="card-collapsible-content space-y-6">
+                    <!-- Infografik Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-sky-50 p-6 rounded-2xl border border-sky-200 shadow-sm flex flex-col justify-between">
+                            <div>
+                                <div class="text-[#224463] text-2xl font-bold mb-3"><i class="fa-solid fa-bullseye"></i></div>
+                                <h3 class="font-bold text-[#224463] text-lg mb-2">Matlamat Utama</h3>
+                                <p class="text-sm text-slate-600 leading-relaxed">Membimbing peserta membina dokumen rancangan perniagaan yang lengkap bermula dari profil hingga unjuran aliran kewangan.</p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-sky-200 text-xs font-semibold text-[#224463]">10 Pembentukan Modul</div>
+                        </div>
+                        <div class="bg-amber-50 p-6 rounded-2xl border border-amber-200 shadow-sm flex flex-col justify-between">
+                            <div>
+                                <div class="text-[#b45309] text-2xl font-bold mb-3"><i class="fa-solid fa-clock"></i></div>
+                                <h3 class="font-bold text-amber-900 text-lg mb-2">Tempoh Pelaksanaan</h3>
+                                <p class="text-sm text-slate-600 leading-relaxed">Program intensif 2 hari latihan praktikal berserta 1 sesi semakan susulan bagi menjamin integriti angka kewangan.</p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-amber-200 text-xs font-semibold text-amber-800">2 Hari + 1 Sesi Susulan</div>
+                        </div>
+                        <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-200 shadow-sm flex flex-col justify-between">
+                            <div>
+                                <div class="text-emerald-700 text-2xl font-bold mb-3"><i class="fa-solid fa-shield-check"></i></div>
+                                <h3 class="font-bold text-emerald-900 text-lg mb-2">Standard & Integriti</h3>
+                                <p class="text-sm text-slate-600 leading-relaxed">Memanfaatkan teknologi AI untuk struktur penulisan sambil mengekalkan ketepatan data sahih tanpa rekaan angka.</p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-emerald-200 text-xs font-semibold text-emerald-800">100% Data Sahih</div>
+                        </div>
+                    </div>
+
+<p class="text-slate-700 leading-relaxed text-sm sm:text-base">
+                        Ringkasan eksekutif ini merumuskan komitmen penuh untuk melahirkan usahawan berdaya saing melalui dokumen perniagaan profesional yang memenuhi piawaian ketat institusi kewangan dan agensi pembiayaan.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+<!-- 2. Pengenalan -->
+        <section id="pengenalan" class="proposal-section scroll-mt-28" data-keywords="pengenalan latar belakang kompas strategik">
+            <div class="glass-card text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl border-l-8 border-[#d3ac53]">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-[#d3ac53] text-[#224463] rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-extrabold shadow-lg shrink-0">
+                            02
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-3xl font-extrabold text-[#224463]">Pengenalan</h2>
+                            <p class="text-xs sm:text-sm font-medium text-slate-500">Latar belakang keperluan perancangan perniagaan moden</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleCardBody(this)" class="text-[#224463] hover:text-[#d3ac53] p-2 transition text-lg" title="Tutup / Buka">
+                        <i class="fa-solid fa-chevron-up toggle-icon"></i>
+                    </button>
+                </div>
+
+<div class="card-collapsible-content grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-4 text-slate-700 leading-relaxed text-sm sm:text-base">
+                        <p>
+                            Dalam lanskap ekonomi semasa, dokumen rancangan perniagaan bertindak sebagai kompas strategik syarikat. Namun begitu, ramai usahawan menghadapi kekangan dalam menterjemahkan idea perniagaan ke dalam bentuk dokumentasi rasmi yang menepati piawaian bank dan pelabur.
+                        </p>
+                        <p>
+                            Proposal ini mengetengahkan program bengkel berstruktur yang menggabungkan kepakaran mentor perniagaan dengan kecekapan alat kecerdasan buatan (AI) secara beretika bagi menghasilkan rancangan perniagaan berkualiti tinggi dalam masa yang pantas.
+                        </p>
+                    </div>
+
+<!-- Infografik Aliran -->
+                    <div class="custom-gradient text-white p-6 rounded-2xl shadow-xl border border-[#d3ac53]/30">
+                        <h3 class="text-base font-bold text-[#d3ac53] mb-4 flex items-center"><i class="fa-solid fa-timeline mr-2"></i> Fasa Aliran Bengkel</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-center justify-between bg-white/10 px-4 py-3 rounded-xl backdrop-blur">
+                                <span class="font-medium"><i class="fa-solid fa-circle-dot text-[#d3ac53] mr-2"></i> Pra-Bengkel</span>
+                                <span class="text-slate-300 text-xs">Senarai Semak & Data</span>
+                            </div>
+                            <div class="flex items-center justify-between bg-white/10 px-4 py-3 rounded-xl backdrop-blur">
+                                <span class="font-medium"><i class="fa-solid fa-circle-dot text-[#d3ac53] mr-2"></i> Hari Pertama</span>
+                                <span class="text-slate-300 text-xs">Analisis & Strategi</span>
+                            </div>
+                            <div class="flex items-center justify-between bg-white/10 px-4 py-3 rounded-xl backdrop-blur">
+                                <span class="font-medium"><i class="fa-solid fa-circle-dot text-[#d3ac53] mr-2"></i> Hari Kedua</span>
+                                <span class="text-slate-300 text-xs">Kewangan & Risiko</span>
+                            </div>
+                            <div class="flex items-center justify-between bg-white/10 px-4 py-3 rounded-xl backdrop-blur">
+                                <span class="font-medium"><i class="fa-solid fa-circle-dot text-emerald-400 mr-2"></i> Sesi Susulan</span>
+                                <span class="text-slate-300 text-xs">Semakan Draf Akhir</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- 3. Penyataan Masalah -->
+        <section id="masalah" class="proposal-section scroll-mt-28" data-keywords="penyataan masalah cabaran struktur angka">
+            <div class="glass-card text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl border-l-8 border-rose-600">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-rose-600 text-white rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-extrabold shadow-lg shrink-0">
+                            03
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-3xl font-extrabold text-[#224463]">Penyataan Masalah</h2>
+                            <p class="text-xs sm:text-sm font-medium text-slate-500">Cabaran utama usahawan dalam penyediaan dokumen pembiayaan</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleCardBody(this)" class="text-[#224463] hover:text-[#d3ac53] p-2 transition text-lg" title="Tutup / Buka">
+                        <i class="fa-solid fa-chevron-up toggle-icon"></i>
+                    </button>
+                </div>
+
+<div class="card-collapsible-content grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-rose-50/80 p-6 rounded-2xl border border-rose-200 flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="w-12 h-12 bg-rose-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl shadow">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-2">Struktur Dokumen Lemah</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">Usahawan sering gagal menyusun maklumat perniagaan mengikut format piawaian institusi kewangan yang ditetapkan.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-rose-200 text-xs font-bold text-rose-700">Kesan: Permohonan Ditolak</div>
+                    </div>
+                    <div class="bg-rose-50/80 p-6 rounded-2xl border border-rose-200 flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="w-12 h-12 bg-rose-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl shadow">
+                                <i class="fa-solid fa-calculator"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-2">Ketidakselarasan Angka</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">Unjuran jualan dan struktur kos tidak sepadan dengan realiti operasi sebenar serta andaian kewangan yang munasabah.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-rose-200 text-xs font-bold text-rose-700">Kesan: Keraguan Panel Penilai</div>
+                    </div>
+                    <div class="bg-rose-50/80 p-6 rounded-2xl border border-rose-200 flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="w-12 h-12 bg-rose-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl shadow">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-2">Ketiadaan Panduan Pakar</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">Proses penyediaan dokumen yang memakan masa tanpa bimbingan teknikal yang betul menyebabkan usahawan cepat berputus asa.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-rose-200 text-xs font-bold text-rose-700">Kesan: Pembaziran Sumber</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- 4. Penyelesaian -->
+        <section id="penyelesaian" class="proposal-section scroll-mt-28" data-keywords="penyelesaian templat silang angka semakan">
+            <div class="glass-card text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl border-l-8 border-emerald-600">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-emerald-600 text-white rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-extrabold shadow-lg shrink-0">
+                            04
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-3xl font-extrabold text-[#224463]">Penyelesaian</h2>
+                            <p class="text-xs sm:text-sm font-medium text-slate-500">Pendekatan strategik dan metodologi bengkel komprehensif</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleCardBody(this)" class="text-[#224463] hover:text-[#d3ac53] p-2 transition text-lg" title="Tutup / Buka">
+                        <i class="fa-solid fa-chevron-up toggle-icon"></i>
+                    </button>
+                </div>
+
+<div class="card-collapsible-content grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-4 text-slate-700 text-sm sm:text-base">
+                        <p class="leading-relaxed">
+                            Bengkel ini menawarkan penyelesaian berstruktur menerusi modul latihan intensif yang membimbing peserta menguruskan data sebenar, membina unjuran kewangan yang boleh disemak, dan menggunakan AI secara beretika.
+                        </p>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start space-x-3">
+                                <i class="fa-solid fa-circle-check text-emerald-600 mt-1 text-base"></i>
+                                <span>Templat Standard Profesional: Menyediakan templat terbukti berkesan mengikut kehendak agensi pembiayaan.</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <i class="fa-solid fa-circle-check text-emerald-600 mt-1 text-base"></i>
+                                <span>Penyemakan Silang Angka: Memastikan unjuran aliran tunai selaras dengan pelan operasi dan kos sebenar.</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <i class="fa-solid fa-circle-check text-emerald-600 mt-1 text-base"></i>
+                                <span>Sesi Semakan Susulan: Ruang khas untuk membetulkan ketidakselarasan sebelum dokumen dihantar secara rasmi.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+<!-- Infografik Kemajuan Modul -->
+                    <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-xl border border-emerald-500/30">
+                        <h3 class="font-bold text-emerald-400 mb-4 flex items-center"><i class="fa-solid fa-chart-pie mr-2"></i> Komponen Draf Rancangan Perniagaan</h3>
+                        <div class="space-y-3 text-sm">
+                            <div>
+                                <div class="flex justify-between mb-1 font-medium"><span>Ringkasan Eksekutif & Profil</span><span class="text-emerald-400">100%</span></div>
+                                <div class="w-full bg-slate-800 rounded-full h-2.5"><div class="bg-emerald-500 h-2.5 rounded-full" style="width: 100%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1 font-medium"><span>Analisis Pasaran & Strategi</span><span class="text-emerald-400">100%</span></div>
+                                <div class="w-full bg-slate-800 rounded-full h-2.5"><div class="bg-emerald-500 h-2.5 rounded-full" style="width: 100%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1 font-medium"><span>Pelan Operasi & Organisasi</span><span class="text-emerald-400">100%</span></div>
+                                <div class="w-full bg-slate-800 rounded-full h-2.5"><div class="bg-emerald-500 h-2.5 rounded-full" style="width: 100%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1 font-medium"><span>Pelan Kewangan & Andaian</span><span class="text-emerald-400">100%</span></div>
+                                <div class="w-full bg-slate-800 rounded-full h-2.5"><div class="bg-emerald-500 h-2.5 rounded-full" style="width: 100%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- 5. Objektif Program -->
+        <section id="objektif" class="proposal-section scroll-mt-28" data-keywords="objektif profil strategi kewangan risiko">
+            <div class="glass-card text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl border-l-8 border-[#224463]">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-[#224463] text-[#d3ac53] rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-extrabold shadow-lg shrink-0">
+                            05
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-3xl font-extrabold text-[#224463]">Objektif Program</h2>
+                            <p class="text-xs sm:text-sm font-medium text-slate-500">Sasaran terperinci pencapaian peserta sepanjang bengkel</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleCardBody(this)" class="text-[#224463] hover:text-[#d3ac53] p-2 transition text-lg" title="Tutup / Buka">
+                        <i class="fa-solid fa-chevron-up toggle-icon"></i>
+                    </button>
+                </div>
+
+<div class="card-collapsible-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <div class="text-[#224463] text-3xl mb-3"><i class="fa-solid fa-briefcase"></i></div>
+                        <h3 class="font-bold text-slate-900 mb-2">Profil Perniagaan</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Memperincikan profil, produk/perkhidmatan, pelanggan sasaran, serta kelebihan penawaran unik.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <div class="text-[#b45309] text-3xl mb-3"><i class="fa-solid fa-chess-knight"></i></div>
+                        <h3 class="font-bold text-slate-900 mb-2">Strategi & Operasi</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Menyusun strategi pemasaran, pelan operasi, keperluan tenaga kerja, dan jadual pelaksanaan projek.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <div class="text-emerald-700 text-3xl mb-3"><i class="fa-solid fa-coins"></i></div>
+                        <h3 class="font-bold text-slate-900 mb-2">Unjuran Kewangan</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Menyediakan unjuran jualan, kos, aliran tunai, dan modal berasaskan andaian yang telus dan munasabah.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <div class="text-rose-600 text-3xl mb-3"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3 class="font-bold text-slate-900 mb-2">Pengurusan Risiko</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Mengenal pasti risiko utama serta merangka langkah mitigasi yang sepadan dengan keupayaan perniagaan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- 6. Sasaran Peserta -->
+        <section id="sasaran" class="proposal-section scroll-mt-28" data-keywords="sasaran peserta pks permulaan pembiayaan">
+            <div class="glass-card text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl border-l-8 border-[#d3ac53]">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-[#d3ac53] text-[#224463] rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-extrabold shadow-lg shrink-0">
+                            06
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-3xl font-extrabold text-[#224463]">Sasaran Peserta</h2>
+                            <p class="text-xs sm:text-sm font-medium text-slate-500">Kumpulan sasaran yang mendapat manfaat optimum daripada program</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleCardBody(this)" class="text-[#224463] hover:text-[#d3ac53] p-2 transition text-lg" title="Tutup / Buka">
+                        <i class="fa-solid fa-chevron-up toggle-icon"></i>
+                    </button>
+                </div>
+
+<div class="card-collapsible-content grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-amber-50/50 p-6 rounded-2xl border border-amber-200 shadow-sm">
+                        <div class="text-[#b45309] text-xl font-bold mb-3"><i class="fa-solid fa-store mr-2"></i> Usahawan PKS</div>
+                        <p class="text-sm text-slate-600 leading-relaxed">Pemilik perniagaan kecil dan sederhana yang ingin menstrukturkan semula pelan perniagaan untuk pengembangan operasi berskala besar.</p>
+                    </div>
+                    <div class="bg-amber-50/50 p-6 rounded-2xl border border-amber-200 shadow-sm">
+                        <div class="text-[#b45309] text-xl font-bold mb-3"><i class="fa-solid fa-lightbulb mr-2"></i> Usahawan Permulaan</div>
+                        <p class="text-sm text-slate-600 leading-relaxed">Individu berwawasan yang mempunyai produk inovatif dan memerlukan draf rancangan rasmi untuk pembentangan kepada pelabur.</p>
+                    </div>
+                    <div class="bg-amber-50/50 p-6 rounded-2xl border border-amber-200 shadow-sm">
+                        <div class="text-[#b45309] text-xl font-bold mb-3"><i class="fa-solid fa-hand-holding-dollar mr-2"></i> Pemohon Pembiayaan</div>
+                        <p class="text-sm text-slate-600 leading-relaxed">Usahawan yang bersiap sedia memohon pinjaman perniagaan, pembiayaan mikro, atau geran daripada agensi kerajaan dan bank.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- 7. Impak Kepada Peserta -->
+        <section id="impak" class="proposal-section scroll-mt-28" data-keywords="impak peserta dokumen kewangan ai">
+            <div class="glass-card text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl border-l-8 border-sky-600">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-sky-600 text-white rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-extrabold shadow-lg shrink-0">
+                            07
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-3xl font-extrabold text-[#224463]">Impak Kepada Peserta</h2>
+                            <p class="text-xs sm:text-sm font-medium text-slate-500">Manfaat langsung yang diperoleh oleh peserta selepas menyertai bengkel</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleCardBody(this)" class="text-[#224463] hover:text-[#d3ac53] p-2 transition text-lg" title="Tutup / Buka">
+                        <i class="fa-solid fa-chevron-up toggle-icon"></i>
+                    </button>
+                </div>
+
+<div class="card-collapsible-content grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex space-x-4 p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="text-sky-600 text-3xl shrink-0"><i class="fa-solid fa-file-contract"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1 text-base sm:text-lg">Draf Lengkap & Profesional</h3>
+                            <p class="text-sm text-slate-600">Memiliki satu draf rancangan perniagaan komprehensif yang merangkumi semua aspek perniagaan wajib.</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="text-sky-600 text-3xl shrink-0"><i class="fa-solid fa-brain"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1 text-base sm:text-lg">Kemahiran Analisis Kewangan</h3>
+                            <p class="text-sm text-slate-600">Keupayaan membina lembaran andaian kewangan dan unjuran berasaskan data sahih yang munasabah.</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="text-sky-600 text-3xl shrink-0"><i class="fa-solid fa-bullhorn"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1 text-base sm:text-lg">Keyakinan Pembentangan</h3>
+                            <p class="text-sm text-slate-600">Lebih bersedia membentangkan hala tuju syarikat di hadapan panel penilai, bank, atau pelabur strategik.</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="text-sky-600 text-3xl shrink-0"><i class="fa-solid fa-robot"></i></div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1 text-base sm:text-lg">Celik Teknologi AI Beretika</h3>
+                            <p class="text-sm text-slate-600">Mahir memanfaatkan alat AI untuk menyusun struktur dokumen tanpa menjejaskan integriti angka perniagaan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- 8. Impak Kepada Agensi Pembimbing -->
+        <section id="agensi" class="proposal-section scroll-mt-28" data-keywords="impak agensi saringan kecekapan kpi">
+            <div class="glass-card text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl border-l-8 border-indigo-600">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-extrabold shadow-lg shrink-0">
+                            08
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-3xl font-extrabold text-[#224463]">Impak Kepada Agensi Pembimbing</h2>
+                            <p class="text-xs sm:text-sm font-medium text-slate-500">Nilai tambah kepada agensi penganjur dan institusi pembimbing</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleCardBody(this)" class="text-[#224463] hover:text-[#d3ac53] p-2 transition text-lg" title="Tutup / Buka">
+                        <i class="fa-solid fa-chevron-up toggle-icon"></i>
+                    </button>
+                </div>
+
+<div class="card-collapsible-content grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-indigo-50/60 p-6 rounded-2xl border border-indigo-200 shadow-sm">
+                        <div class="text-indigo-700 text-lg font-bold mb-2"><i class="fa-solid fa-circle-check mr-2"></i> Kualiti Permohonan Tinggi</div>
+                        <p class="text-sm text-slate-600 leading-relaxed">Mengurangkan kesilapan asas dalam permohonan pembiayaan usahawan, sekali gus memudahkan proses semakan dalaman agensi.</p>
+                    </div>
+                    <div class="bg-indigo-50/60 p-6 rounded-2xl border border-indigo-200 shadow-sm">
+                        <div class="text-indigo-700 text-lg font-bold mb-2"><i class="fa-solid fa-bolt mr-2"></i> Kecekapan Operasi</div>
+                        <p class="text-sm text-slate-600 leading-relaxed">Mempercepatkan kitaran penilaian dokumen melalui penggunaan templat seragam dan piawaian data yang telus.</p>
+                    </div>
+                    <div class="bg-indigo-50/60 p-6 rounded-2xl border border-indigo-200 shadow-sm">
+                        <div class="text-indigo-700 text-lg font-bold mb-2"><i class="fa-solid fa-award mr-2"></i> Peningkatan Kejayaan</div>
+                        <p class="text-sm text-slate-600 leading-relaxed">Meningkatkan kadar kelulusan pembiayaan dan kejayaan komersial bagi program pembangunan usahawan agensi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- 9. Kesimpulan -->
+        <section id="kesimpulan" class="proposal-section scroll-mt-28" data-keywords="kesimpulan rumusan cadangan">
+            <div class="glass-card text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl border-l-8 border-[#224463]">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-[#224463] text-[#d3ac53] rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-extrabold shadow-lg shrink-0">
+                            09
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-3xl font-extrabold text-[#224463]">Kesimpulan</h2>
+                            <p class="text-xs sm:text-sm font-medium text-slate-500">Rumusan keseluruhan cadangan penganjuran program</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleCardBody(this)" class="text-[#224463] hover:text-[#d3ac53] p-2 transition text-lg" title="Tutup / Buka">
+                        <i class="fa-solid fa-chevron-up toggle-icon"></i>
+                    </button>
+                </div>
+                <div class="card-collapsible-content">
+                    <p class="text-slate-700 leading-relaxed text-sm sm:text-base">
+                        Cadangan Bengkel Penyediaan Rancangan Perniagaan ini menawarkan modul yang komprehensif, menggabungkan latihan praktikal selama dua hari dan sesi susulan yang kritikal. Melalui panduan struktur yang betul, pengiraan kewangan yang munasabah, serta penggunaan AI yang beretika, program ini menjadi landasan terbaik melahirkan usahawan yang berdaya tahan dan berdaya saing tinggi di peringkat pasaran domestik mahupun global.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+<!-- 10. Penutup -->
+        <section id="penutup" class="proposal-section scroll-mt-28" data-keywords="penutup pengesahan kelulusan">
+            <div class="custom-gradient text-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-[#d3ac53]/30">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 accent-gradient text-[#224463] rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-extrabold shadow-lg shrink-0">
+                            10
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-3xl font-extrabold text-white">Penutup & Pengesahan</h2>
+                            <p class="text-xs sm:text-sm font-medium text-slate-300">Langkah seterusnya untuk kelulusan dan pelaksanaan program</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleCardBody(this)" class="text-[#d3ac53] hover:text-white p-2 transition text-lg" title="Tutup / Buka">
+                        <i class="fa-solid fa-chevron-up toggle-icon"></i>
+                    </button>
+                </div>
+                <div class="card-collapsible-content space-y-6">
+                    <p class="text-slate-200 leading-relaxed text-sm sm:text-base">
+                        Proposal digital ini dikemukakan untuk pertimbangan dan kelulusan pihak pengurusan agensi. Pihak pelaksana bersedia mengadakan perbincangan lanjut bagi menyesuaikan modul, tarikh pelaksanaan, serta format khusus agensi demi kejayaan program pembangunan usahawan ini.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4 border-t border-white/10 text-xs sm:text-sm">
+                        <div class="bg-white/10 px-4 sm:px-5 py-2.5 rounded-xl backdrop-blur border border-white/10">
+                            <span class="text-[#d3ac53] font-semibold">Status Cadangan:</span> Sedia untuk Pertimbangan
+                        </div>
+                        <div class="bg-white/10 px-4 sm:px-5 py-2.5 rounded-xl backdrop-blur border border-white/10">
+                            <span class="text-[#d3ac53] font-semibold">Format:</span> Dokumen Interaktif Digital (#224463 & #d3ac53)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- Tambahan Bahagian 11: Jadual Pelaksanaan & Anggaran Kos (Tambahan Penilaian Nilai) -->
+        <section id="jadual-kos" class="proposal-section scroll-mt-28" data-keywords="jadual kos bajet pelaburan">
+            <div class="glass-card text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl border-l-8 border-[#d3ac53]">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-[#d3ac53] text-[#224463] rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-extrabold shadow-lg shrink-0">
+                            11
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-3xl font-extrabold text-[#224463]">Jadual Pelaksanaan & Anggaran Kos</h2>
+                            <p class="text-xs sm:text-sm font-medium text-slate-500">Garispanduan masa dan struktur pelaburan program</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleCardBody(this)" class="text-[#224463] hover:text-[#d3ac53] p-2 transition text-lg" title="Tutup / Buka">
+                        <i class="fa-solid fa-chevron-up toggle-icon"></i>
+                    </button>
+                </div>
+                <div class="card-collapsible-content space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                            <h3 class="font-bold text-[#224463] mb-3 flex items-center"><i class="fa-solid fa-calendar-check mr-2 text-[#d3ac53]"></i> Garis Masa Pelaksanaan</h3>
+                            <ul class="space-y-3 text-xs sm:text-sm text-slate-600">
+                                <li class="flex justify-between border-b pb-2"><span>Minggu 1:</span> <span class="font-semibold text-slate-800">Pendaftaran & Agihan Senarai Semak Data</span></li>
+                                <li class="flex justify-between border-b pb-2"><span>Minggu 2:</span> <span class="font-semibold text-slate-800">Hari 1 Bengkel (Analisis & Strategi)</span></li>
+                                <li class="flex justify-between border-b pb-2"><span>Minggu 3:</span> <span class="font-semibold text-slate-800">Hari 2 Bengkel (Kewangan & Risiko)</span></li>
+                                <li class="flex justify-between"><span>Minggu 4:</span> <span class="font-semibold text-slate-800">Sesi Susulan & Pengesahan Draf Akhir</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                            <h3 class="font-bold text-[#224463] mb-3 flex items-center"><i class="fa-solid fa-receipt mr-2 text-[#d3ac53]"></i> Komponen Pelaburan Program</h3>
+                            <ul class="space-y-3 text-xs sm:text-sm text-slate-600">
+                                <li class="flex justify-between border-b pb-2"><span>Modul & Templat Rasmi:</span> <span class="font-semibold text-slate-800">Termasuk</span></li>
+                                <li class="flex justify-between border-b pb-2"><span>Penyeliaan Mentor & Perunding:</span> <span class="font-semibold text-slate-800">Disediakan</span></li>
+                                <li class="flex justify-between border-b pb-2"><span>Alat Latihan AI Beretika:</span> <span class="font-semibold text-slate-800">Termasuk</span></li>
+                                <li class="flex justify-between"><span>Pakej Sesi Susulan:</span> <span class="font-semibold text-slate-800">Eksklusif</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- Tambahan Bahagian 12: Soalan Lazim (FAQ) -->
+        <section id="faq" class="proposal-section scroll-mt-28" data-keywords="faq soalan lazim jawapan">
+            <div class="glass-card text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl border-l-8 border-[#224463]">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-[#224463] text-[#d3ac53] rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-extrabold shadow-lg shrink-0">
+                            12
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-3xl font-extrabold text-[#224463]">Soalan Lazim (FAQ)</h2>
+                            <p class="text-xs sm:text-sm font-medium text-slate-500">Maklumat tambahan berkaitan pelaksanaan bengkel</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleCardBody(this)" class="text-[#224463] hover:text-[#d3ac53] p-2 transition text-lg" title="Tutup / Buka">
+                        <i class="fa-solid fa-chevron-up toggle-icon"></i>
+                    </button>
+                </div>
+                <div class="card-collapsible-content space-y-4">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200">
+                        <h4 class="font-bold text-[#224463] text-sm sm:text-base mb-1">Adakah peserta perlu membawa data kewangan sendiri?</h4>
+                        <p class="text-xs sm:text-sm text-slate-600">Ya, peserta digalakkan membawa rekod jualan asas, perbelanjaan semasa, dan maklumat perniagaan sedia ada untuk memastikan unjuran yang dibina adalah realistik.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl border border-slate-200">
+                        <h4 class="font-bold text-[#224463] text-sm sm:text-base mb-1">Bagaimanakah teknologi AI digunakan dalam bengkel ini?</h4>
+                        <p class="text-xs sm:text-sm text-slate-600">AI digunakan semata-mata sebagai pembantu menyusun struktur penulisan dan tata bahasa. Angka kewangan tetap dikira dan disemak secara manual oleh peserta bersama perunding.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+</main>
+
+<!-- Footer -->
+    <footer class="bg-[#162e43] text-slate-400 text-center py-10 mt-20 border-t border-[#d3ac53]/20 text-xs sm:text-sm no-print">
+        <div class="max-w-7xl mx-auto px-4 space-y-3">
+            <p class="font-bold text-white">Cadangan Proposal Bengkel Penyediaan Rancangan Perniagaan</p>
+            <p>Dihasilkan dengan reka bentuk interaktif moden, responsif penuh untuk desktop dan mobile, serta menggunakan tema warna korporat rasmi.</p>
+            <p class="text-slate-500">© 2026 Hak Cipta Terpelihara.</p>
+        </div>
+    </footer>
+
+<!-- Interactive Script for Mobile Navigation Drawer, Search Filter, and Accordion Toggle -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking any navigation link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Toggle Card Body (Accordion Functionality)
+        function toggleCardBody(button) {
+            const section = button.closest('section');
+            const content = section.querySelector('.card-collapsible-content');
+            const icon = button.querySelector('.toggle-icon');
+            
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                content.style.display = 'none';
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+
+        // Live Search / Filter Sections
+        const searchInput = document.getElementById('section-search');
+        const sections = document.querySelectorAll('.proposal-section');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase().trim();
+            sections.forEach(sec => {
+                const keywords = sec.getAttribute('data-keywords') || '';
+                const text = sec.innerText.toLowerCase();
+                if (term === '' || text.includes(term) || keywords.includes(term)) {
+                    sec.style.display = 'block';
+                } else {
+                    sec.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

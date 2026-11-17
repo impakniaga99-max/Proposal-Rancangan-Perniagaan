@@ -1,0 +1,6 @@
+{
+  "name": "Proposal Digital: Bengkel Rancangan Perniagaan",
+  "description": "Proposal digital interaktif dwibahasa (Bahasa Melayu & English) untuk Bengkel Penyediaan Rancangan Perniagaan Berstrategi AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
